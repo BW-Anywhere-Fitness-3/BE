@@ -1,11 +1,11 @@
 const router = require("express").Router();
 
-const Users = require("./users-model.js");
+const instructors = require("./instructors-model.js");
 
 router.get("/", (req, res) => {
-  Users.find()
-    .then(users => {
-      res.json(users);
+    instructors.find()
+    .then(instructorList => {
+      res.json(instructorList);
     })
     .catch(err => res.send(err));
 });
