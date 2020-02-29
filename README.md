@@ -2,9 +2,24 @@
 
 ## ENDPOINTS
 
-- /instructor/register
-- /client/register
+- api/instructors/register
+- api/clients/register
 
-- /instructor/login
-- /client/login
+- api/instructors/login
+- api/clients/login
+
+- /api/classes
+
+## Workout example
+
+- 	{
+		"className": "Spin Class",
+		"type": "Spin",
+		"durationMins": "30",
+		"intesityLevel": "high",
+		"location": "Spin Room",
+		"attendees": "12",
+		"maxAttendees": "15",
+		"startTime": "2020-11-08 15:00:00"
+	}
 
