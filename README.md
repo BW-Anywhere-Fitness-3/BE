@@ -1,4 +1,4 @@
-# BE
+## Documentation for the backend
 
 ## ENDPOINTS
 
@@ -9,6 +9,14 @@
 - api/clients/login
 
 - /api/classes
+
+## PUT/PATCH (update) a class
+
+- /api/classes/{id}
+
+## DELETE a class
+
+- /api/classes/{id}
 
 ## Workout example
 
