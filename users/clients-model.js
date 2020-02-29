@@ -5,24 +5,33 @@ module.exports = {
   find,
   findBy,
   findById,
+  recordFirstLogin
 };
 
 function find() {
-  return db('users').select('id', 'username', 'password');
+  return db('clients').select('id', 'username', 'password');
 }
 
 function findBy(filter) {
-  return db('users').where(filter);
+  return db('clients').where(filter);
 }
 
 async function add(client) {
-  const [id] = await db('users').insert(client);
+  const [id] = await db('clients').insert(client);
 
   return findById(id);
 }
 
 function findById(id) {
-  return db('users')
+  return db('clients')
     .where({ id })
     .first();
+}
+
+async function recordFirstLogin(id) {
+  console.log(id, "Record First Log in");
+  await db('clients')
+  .where({ id: id })
+  .update({hasLoggedIn: true});
+  return;
 }

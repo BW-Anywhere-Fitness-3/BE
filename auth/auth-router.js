@@ -2,7 +2,7 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken"); // <<< install this npm package
 
-const Users = require("../users/clients-model.js");
+const Clients = require("../users/clients-model.js");
 const Instructors = require("../users/instructors-model.js");
 const { jwtSecret } = require("../config/secrets.js");
 
@@ -13,7 +13,7 @@ router.post("/register", (req, res) => {
     const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
     user.password = hash;
 
-    Users.add(user)
+    Clients.add(user)
       .then(saved => {
         res.status(201).json(saved);
       })
@@ -39,14 +39,15 @@ router.post("/login", (req, res) => {
   if (~req.originalUrl.indexOf("/clients/")) {
     let { username, password } = req.body;
 
-    Users.findBy({ username })
+    Clients.findBy({ username })
       .first()
       .then(client => {
         if (client && bcrypt.compareSync(password, client.password)) {
           const token = generateToken(client); // get a token
-
+          Clients.recordFirstLogin(client.id);
           res.status(200).json({
             message: `Welcome ${client.username}!`,
+            isFirstLogin: !client.hasLoggedIn,
             token, // send the token
           });
         } else {
@@ -62,12 +63,13 @@ router.post("/login", (req, res) => {
 
       Instructors.findBy({ username })
         .first()
-        .then(client => {
-          if (client && bcrypt.compareSync(password, client.password)) {
-            const token = generateToken(client); // get a token
-
+        .then(instructor => {
+          if (instructor && bcrypt.compareSync(password, instructor.password)) {
+            const token = generateToken(instructor); // get a token
+            Instructors.recordFirstLogin(instructor.id);
             res.status(200).json({
-              message: `Welcome ${client.username}!`,
+              message: `Welcome ${instructor.username}!`,
+              isFirstLogin: !instructor.hasLoggedIn,
               token, // send the token
             });
           } else {

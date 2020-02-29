@@ -5,6 +5,7 @@ module.exports = {
   find,
   findBy,
   findById,
+  recordFirstLogin
 };
 
 function find() {
@@ -25,4 +26,12 @@ function findById(id) {
   return db('instructors')
     .where({ id })
     .first();
+}
+
+async function recordFirstLogin(id) {
+    console.log(id, "Record First Log in");
+    await db('instructors')
+    .where({ id: id })
+    .update({hasLoggedIn: true});
+    return;
 }
