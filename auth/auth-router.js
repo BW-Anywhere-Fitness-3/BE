@@ -43,7 +43,7 @@ router.post("/login", (req, res) => {
       .first()
       .then(client => {
         if (client && bcrypt.compareSync(password, client.password)) {
-          const token = generateToken(client); // get a token
+          const token = generateToken(client, 'client'); // get a token
           Clients.recordFirstLogin(client.id);
           res.status(200).json({
             message: `Welcome ${client.username}!`,
@@ -65,7 +65,7 @@ router.post("/login", (req, res) => {
         .first()
         .then(instructor => {
           if (instructor && bcrypt.compareSync(password, instructor.password)) {
-            const token = generateToken(instructor); // get a token
+            const token = generateToken(instructor, 'instructor'); // get a token
             Instructors.recordFirstLogin(instructor.id);
             res.status(200).json({
               message: `Welcome ${instructor.username}!`,
@@ -83,11 +83,11 @@ router.post("/login", (req, res) => {
     }
   });
 
-function generateToken(client) {
+function generateToken(client, type) {
   const payload = {
     subject: client.id,
     username: client.username,
-    role: client.role || "user",
+    role: client.role || type,
   };
 
   const options = {
