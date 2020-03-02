@@ -8,16 +8,22 @@ const { jwtSecret } = require("../config/secrets.js");
 
 // for endpoints beginning with /api/auth
 router.post("/register", (req, res) => {
+  console.log("Hello");
   if (~req.originalUrl.indexOf("/clients/")) {
+    console.log("This is another spot");
     let user = req.body;
     const hash = bcrypt.hashSync(user.password, 10); // 2 ^ n
     user.password = hash;
+    
+  console.log("This is a third checkpoint");
 
     Clients.add(user)
       .then(saved => {
+        console.log("After then");
         res.status(201).json(saved);
       })
       .catch(error => {
+        console.log("after catch");
         res.status(500).json(error);
       });
   } else {
