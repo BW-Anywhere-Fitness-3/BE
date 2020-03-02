@@ -1,64 +1,20 @@
-// Update with your config settings.
-
 module.exports = {
-
-  // development: {
-  //   client: 'sqlite3',
-  //   connection: {
-  //     filename: './dev.sqlite3'
-  //   },
-  //   useNullAsDefault: true
-  // },
-
   development: {
-    client: 'postgresql',
+    client: 'sqlite3',
+    useNullAsDefault: true,
     connection: {
-      host: 'drona.db.elephantsql.com',
-      database: 'uxvnhtzc',
-      user:     'uxvnhtzc',
-      password: 'JVvnOqbZE_2y2508kH3WaYnrBJrdghqo'
+      filename: './database/auth.db3',
     },
     pool: {
-      min: 2,
-      max: 10
+      afterCreate: (conn, done) => {
+        conn.run('PRAGMA foreign_keys = ON', done);
+      },
     },
     migrations: {
-      tableName: 'knex_migrations'
-    }
+      directory: './database/migrations',
+    },
+    seeds: {
+      directory: './database/seeds',
+    },
   },
-  
-  staging: {
-    client: 'postgresql',
-    connection: {
-      host: 'drona.db.elephantsql.com',
-      database: 'uxvnhtzc',
-      user:     'uxvnhtzc',
-      password: 'JVvnOqbZE_2y2508kH3WaYnrBJrdghqo'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  },
-
-  production: {
-    client: 'postgresql',
-    connection: {
-      host: 'drona.db.elephantsql.com',
-      database: 'uxvnhtzc',
-      user:     'uxvnhtzc',
-      password: 'JVvnOqbZE_2y2508kH3WaYnrBJrdghqo'
-    },
-    pool: {
-      min: 2,
-      max: 10
-    },
-    migrations: {
-      tableName: 'knex_migrations'
-    }
-  }
-
 };
