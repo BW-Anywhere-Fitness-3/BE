@@ -3,7 +3,7 @@ exports.up = function (knex) {
     classes.increments();
 
     classes
-      .string('className', 128)
+      .string('workoutName', 128)
       .notNullable()
       .unique();
     classes.string('type', 128).notNullable();
