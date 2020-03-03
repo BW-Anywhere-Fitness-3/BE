@@ -20,7 +20,7 @@ server.use("/api/instructors", authRouter);
 server.use("/api/classes", restricted, checkRole("instructor"), classesRouter);
 
 server.get("/", (req, res) => {
-  res.send("It's alive!");
+  res.send('{"isServerRunning":true}');
 });
 
 module.exports = server;
