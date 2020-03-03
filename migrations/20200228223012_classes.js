@@ -8,7 +8,7 @@ exports.up = function (knex) {
       .unique();
     classes.string('type', 128).notNullable();
     classes.integer('durationMins').notNullable();
-    classes.integer('intesityLevel').notNullable();
+    classes.integer('intensityLevel').notNullable();
     classes.string('location', 128).notNullable();
     classes.integer('attendees').notNullable();
     classes.integer('maxAttendees').notNullable();
