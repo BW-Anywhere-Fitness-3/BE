@@ -21,7 +21,7 @@
 ## Workout example
 
 - 	{
-		"className": "Spin Class",
+		"workoutName": "Spin Class",
 		"type": "Spin",
 		"durationMins": "30",
 		"intesityLevel": "high",
