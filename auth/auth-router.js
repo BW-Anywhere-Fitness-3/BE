@@ -24,7 +24,7 @@ router.post("/register", (req, res) => {
       })
       .catch(error => {
         console.log("This is the catch");
-        res.status(500).json(error);
+        res.status(500).json({error: error.message});
       });
   } else {
     let user = req.body;
@@ -36,7 +36,7 @@ router.post("/register", (req, res) => {
         res.status(201).json(saved);
       })
       .catch(error => {
-        res.status(500).json(error);
+        res.status(500).json({error: error.message});
       });
   }
 });
