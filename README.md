@@ -24,7 +24,7 @@
 		"workoutName": "Spin Class",
 		"type": "Spin",
 		"durationMins": "30",
-		"intesityLevel": "high",
+		"intensityLevel": "high",
 		"location": "Spin Room",
 		"attendees": "12",
 		"maxAttendees": "15",
