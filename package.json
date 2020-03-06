@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Anywhere Fitness BW Project",
   "main": "index.js",
+  "engines": {
+    "node": "12.16.0"
+  },
   "scripts": {
     "server": "nodemon",
     "start": "node index.js"
