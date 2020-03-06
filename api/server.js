@@ -16,7 +16,7 @@ server.use(cors());
 
 server.use("/api/clients", authRouter);
 server.use("/api/instructors", authRouter);
-// server.use("/api/clients", restricted, checkRole("client"), clientsRouter);
+server.use("/api/clients", restricted, checkRole("client"), clientsRouter);
 server.use("/api/classes", restricted, checkRole("instructor"), classesRouter);
 
 server.get("/", (req, res) => {

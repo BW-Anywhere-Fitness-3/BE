@@ -42,6 +42,7 @@ router.post("/register", (req, res) => {
 });
 
 router.post("/login", (req, res) => {
+  console.log("New Login by:" + req.body + " at URL:" + req.originalUrl);
   if (~req.originalUrl.indexOf("/clients/")) {
     let { username, password } = req.body;
 
