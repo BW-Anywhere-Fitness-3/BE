@@ -28,7 +28,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "helmet": "^3.21.3",
-    "jest": "^25.1.0",
     "jsonwebtoken": "^8.5.1",
     "knex": "^0.20.10",
     "nodemon": "^2.0.2",
