@@ -4,12 +4,8 @@
   "description": "Anywhere Fitness BW Project",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch",
     "server": "nodemon",
     "start": "node index.js"
-  },
-  "jest": {
-    "testEnvironment": "node"
   },
   "repository": {
     "type": "git",
